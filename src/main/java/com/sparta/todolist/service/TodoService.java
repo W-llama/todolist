@@ -4,10 +4,12 @@ import com.sparta.todolist.dto.TodoRequestDto;
 import com.sparta.todolist.dto.TodoResponseDto;
 import com.sparta.todolist.entity.Todo;
 import com.sparta.todolist.repository.TodoRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class TodoService {
     private final TodoRepository todoRepository;
 
@@ -42,7 +44,7 @@ public class TodoService {
         // 해당 메모가 DB에 존재하는지 확인
         Todo todo = findTodo(id);
 
-        // memo 내용 수정
+        // 스케줄 내용 수정
         todo.update(requestDto);
 
         return id;
@@ -52,7 +54,7 @@ public class TodoService {
         // 해당 메모가 DB에 존재하는지 확인
         Todo todo = findTodo(id);
 
-        // memo 삭제
+        // 스케줄 삭제
         todoRepository.delete(todo);
 
         return id;

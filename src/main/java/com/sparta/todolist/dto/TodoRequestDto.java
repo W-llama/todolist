@@ -7,10 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TodoRequestDto {
-    private Long id;
     private String title;
     private String contents;
     private String userName;
     private String password;
-
 }

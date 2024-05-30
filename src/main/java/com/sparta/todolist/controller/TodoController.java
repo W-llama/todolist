@@ -17,56 +17,34 @@ import java.util.Map;
 @RequestMapping("/api")
 public class TodoController {
 
-    public final Map<Long, Todo> todoList=new HashMap<>();
+    public final TodoService todoService;
+
+    public TodoController(TodoService todoService) {
+        this.todoService = todoService;
+    }
 
     @PostMapping("/todo")
     public TodoResponseDto createTodo(@RequestBody TodoRequestDto requestDto){
-        //RequestDto -> Entity
-        Todo todo=new Todo(requestDto);
-
-        //Memo Max Id Check
-        Long maxId = todoList.size() > 0 ? Collections.max(todoList.keySet()) +1: 1;
-        todo.setId(maxId);
-
-        //DB 저장
-        todoList.put(todo.getId(), todo);
-
-        //Entity -> ResponseDto
-        TodoResponseDto todoResponseDto = new TodoResponseDto(todo);
-
-        return todoResponseDto;
+        return todoService.createTodo(requestDto);
     }
 
     @GetMapping("/todo")
-    public List<TodoResponseDto> getSchedul(){
-        List<TodoResponseDto> responseList= todoList.values().stream().map(TodoResponseDto::new).toList();
-
-        return responseList;
+    public List<TodoResponseDto> getTodo(){
+        return todoService.getTodo();
     }
 
+    @GetMapping("/todo/contents")
+    public List<TodoResponseDto> getTodoByKeyword(String keyword){
+        return todoService.getTodoByKeyword(keyword);
+    }
     @PutMapping("/todo/{id}")
     public Long updateTodo(@PathVariable Long id, @RequestBody TodoRequestDto requestDto){
-        //해당 메모가 DB에 존재하는지 확인
-        if(todoList.containsKey(id)){
-            Todo todo=todoList.get(id);
-
-            //todo 수정
-            todo.update(requestDto);
-            return todo.getId();
-        }else {
-            throw new IllegalArgumentException("선택한 스케줄은 존재하지 않습니다.");
-        }
+        return todoService.updateTodo(id, requestDto);
     }
 
     @DeleteMapping("/todo/{id}")
     public Long deleteTodo(@PathVariable Long id){
-        //해당 메모가 DB에 존재하는지 확인
-        if(todoList.containsKey(id)){
-            //todo 삭제
-            todoList.remove(id);
-            return id;
-        }else {
-            throw new IllegalArgumentException("선택한 스케줄은 존재하지 않습니다.");
-        }
+        return todoService.deleteTodo(id);
     }
+
 }
