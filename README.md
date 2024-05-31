@@ -1,7 +1,8 @@
 
 ![스크린샷 2024-05-30 131840](https://github.com/W-llama/todolist/assets/106076670/b57525a1-7c35-4956-9d66-3d6dc4b52869)
 
-![스크린샷 2024-05-31 131156](https://github.com/W-llama/todolist/assets/106076670/99a02a29-59cb-4843-b73e-164d73548a07)
+![image](https://github.com/W-llama/todolist/assets/106076670/8d289bad-3d91-4381-ad44-cc99a5f7ea97)
+
 
 
 ERD Diagram
