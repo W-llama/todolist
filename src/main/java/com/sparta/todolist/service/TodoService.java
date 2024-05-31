@@ -60,7 +60,7 @@ public class TodoService {
         return id;
     }
 
-    private Todo findTodo(Long id) {
+    public Todo findTodo(Long id) {
         return todoRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("선택한 메모는 존재하지 않습니다.")
         );

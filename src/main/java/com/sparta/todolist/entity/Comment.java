@@ -27,15 +27,14 @@ public class Comment extends Timestamped {
 
 
 
-    public Comment(CommentRequestDto commentRequestDto) {
-        this.comment = commentRequestDto.getComment();
-        this.userid = commentRequestDto.getUserid();
-        this.todo = todo;
-    }
-    public void update(CommentRequestDto commentRequestDto) {
+    public Comment(CommentRequestDto commentRequestDto, Todo todo) {
         this.comment = commentRequestDto.getComment();
         this.userid = commentRequestDto.getUserid();
         this.todo = todo;
 
+    }
+    public void update(CommentRequestDto commentRequestDto) {
+        this.comment = commentRequestDto.getComment();
+        this.userid = commentRequestDto.getUserid();
     }
 }

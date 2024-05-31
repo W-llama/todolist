@@ -1,6 +1,5 @@
 package com.sparta.todolist.dto;
 
-import com.sparta.todolist.entity.Todo;
 import lombok.Getter;
 import lombok.Setter;
 
