@@ -15,24 +15,27 @@ import lombok.Setter;
 public class Comment extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentid;
+    private Long id;
     @Column(name = "comment_txt", nullable = false)
     private String comment;
     @Column(name = "userid", nullable = false)
     private String userid;
-    @Column(name = "id", nullable = false)
-    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="todo_id", nullable = false)
+    private Todo todo;
+
+
 
     public Comment(CommentRequestDto commentRequestDto) {
         this.comment = commentRequestDto.getComment();
         this.userid = commentRequestDto.getUserid();
-        this.id = commentRequestDto.getId();
+        this.todo = todo;
     }
     public void update(CommentRequestDto commentRequestDto) {
         this.comment = commentRequestDto.getComment();
         this.userid = commentRequestDto.getUserid();
-        this.id = commentRequestDto.getId();
+        this.todo = todo;
 
     }
-
 }
