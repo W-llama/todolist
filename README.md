@@ -1,1 +1,5 @@
-![스크린샷 2024-05-30 131840](https://github.com/W-llama/todolist/assets/106076670/57e4dc29-d477-4c15-be1d-115585b24f80)
+
+
+ERD Diagram
+
+![스크린샷 2024-05-31 125301](https://github.com/W-llama/todolist/assets/106076670/39b2bdd0-53f4-49ed-adae-f7541df758ef)
